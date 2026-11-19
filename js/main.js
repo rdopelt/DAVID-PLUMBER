@@ -15,3 +15,18 @@
     document.querySelector('.logo')?.focus({ preventScroll: true });
   });
 })();
+
+// Before and after: six jobs first, the rest behind one button.
+(() => {
+  const btn = document.querySelector('[data-works-more]');
+  const list = document.getElementById('works-list');
+  if (!btn || !list) return;
+  btn.addEventListener('click', () => {
+    list.classList.add('is-open');
+    btn.parentElement.hidden = true;
+    // focus moves to the first newly shown job, so keyboard users continue where the button was
+    const first = list.querySelector('.work--extra h3');
+    if (first) { first.tabIndex = -1; first.focus({ preventScroll: true }); }
+    document.dispatchEvent(new Event('works:opened'));
+  });
+})();

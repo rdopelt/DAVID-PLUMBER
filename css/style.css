@@ -228,3 +228,26 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .split-wait [data-split-hero], .split-wait [data-split-scroll] { visibility: hidden; }
 /* SplitText's word masks: keep the space between Hebrew words and the line height unchanged */
 [data-split-hero] .split-word-mask, [data-split-scroll] .split-word-mask { padding-bottom: 0.12em; margin-bottom: -0.12em; }
+
+/* ---------- before and after gallery ---------- */
+.section--tint { background: var(--sky-50); }
+.works { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.work { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md);
+  overflow: hidden; box-shadow: var(--shadow-sm); }
+.work--extra { display: none; }
+.works.is-open .work--extra { display: flex; }
+.work__media { display: grid; grid-template-columns: 1fr; gap: 3px; background: var(--white); }
+.work__media--pair { grid-template-columns: 1fr 1fr; }
+.work__shot { position: relative; margin: 0; overflow: hidden; aspect-ratio: 8 / 5; background: var(--sky-100); }
+.work__media--pair .work__shot { aspect-ratio: 4 / 5; }
+.work__shot img { width: 100%; height: 100%; object-fit: cover; }
+.work__tag { position: absolute; top: 10px; inset-inline-start: 10px; padding: 3px 10px; border-radius: 999px; font-size: 14px; font-weight: 600;
+  background: rgb(255 255 255 / 0.94); color: var(--navy); box-shadow: 0 1px 3px rgb(19 49 74 / 0.15); }
+.work__tag--after { background: var(--blue); color: var(--white); }
+.work__body { padding: 18px 20px 22px; }
+.work__cat { display: inline-block; font-size: 14px; font-weight: 600; color: var(--blue); }
+.work h3 { margin-top: 6px; font-size: 18px; font-weight: 500; line-height: 1.45; }
+.work__body p { margin-top: 6px; color: var(--muted); font-size: 16px; }
+.works__more { display: flex; justify-content: center; margin-top: 40px; }
+@media (max-width: 960px) { .works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .works { grid-template-columns: 1fr; gap: 16px; } .works__more .btn { width: 100%; } }

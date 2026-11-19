@@ -50,6 +50,22 @@
       }
       show();
     });
+
+    // 2. Before and after: the photographs enter one after another, only once their row is well inside the screen.
+    //    ScrollTrigger.batch groups the photos that arrive together (a row on a desktop, a card on a phone).
+    const shots = gsap.utils.toArray('.work__shot');
+    if (shots.length) {
+      gsap.set(shots, { autoAlpha: 0, y: 24 });
+      ScrollTrigger.batch(shots, {
+        start: 'top 82%',   // the photo's top is already a fifth of the way up the screen
+        once: true,
+        onEnter: (batch) => gsap.to(batch, {
+          autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.12, overwrite: true,
+        }),
+      });
+      // the "show all" button reveals more cards: measure the page again so their photos enter the same way
+      document.addEventListener('works:opened', () => ScrollTrigger.refresh());
+    }
   });
 
   // with reduced motion, nothing is split or moved
