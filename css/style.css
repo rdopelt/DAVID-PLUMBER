@@ -283,27 +283,6 @@ html.has-lightbox { overflow: hidden; }
 .step h3 { margin-top: 20px; font-size: 21px; font-weight: 500; }
 .step p { margin-top: 8px; color: var(--muted); }
 
-/* ---------- featured job: drag to compare ---------- */
-.feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: center; margin-bottom: 56px;
-  background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; box-shadow: var(--shadow-sm); }
-.feature__title { margin-top: 8px; font-size: clamp(24px, 2.2vw, 32px); font-weight: 600; line-height: 1.3; }
-.feature__text p { margin-top: 12px; color: var(--muted); font-size: 18px; max-width: 36ch; }
-.compare { position: relative; aspect-ratio: 3 / 4; max-height: 680px; width: 100%; justify-self: center; overflow: hidden; border-radius: var(--r-md);
-  background: var(--sky-100); touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
-.compare__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
-/* the "after" photo shows to the left of the handle (in Hebrew the story reads right to left: before, then after) */
-.compare__after { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
-.compare__line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: var(--white);
-  box-shadow: 0 0 0 1px rgb(19 49 74 / 0.12); pointer-events: none; }
-.compare__knob { position: absolute; top: 50%; left: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 50%; background: var(--white);
-  color: var(--navy); display: grid; place-items: center; box-shadow: var(--shadow-md); transition: transform 160ms var(--ease-out); }
-.compare__knob svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.compare.is-dragging .compare__knob { transform: scale(0.94); }
-.compare__tag { pointer-events: none; }
-.compare__tag--after { inset-inline-start: auto; inset-inline-end: 10px; }
-.compare__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
-.compare:has(.compare__range:focus-visible) .compare__knob { outline: 3px solid var(--blue); outline-offset: 3px; }
-
 /* ---------- phone bar: call and WhatsApp under the thumb ---------- */
 .mbar { display: none; }
 @media (max-width: 640px) {
@@ -331,10 +310,7 @@ html.has-lightbox { overflow: hidden; }
 
 @media (max-width: 960px) {
   .steps { grid-template-columns: 1fr; gap: 16px; }
-  .feature { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
-  .compare { max-width: 520px; }
 }
 @media (max-width: 640px) {
-  .feature { padding: 20px; margin-bottom: 40px; }
   .step { padding: 24px 22px 22px; }
 }

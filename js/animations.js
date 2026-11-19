@@ -1,10 +1,13 @@
 // Gentle motion with GSAP (SplitText + ScrollTrigger). Every piece runs once, eases out without overshoot,
 // and none of it runs when the visitor's device asks for reduced motion.
-//  1. The main heading (data-split-hero): each word rises from below on load, a short gap between words.
+//  1. The main heading (data-split-hero): the words rise in on load, one after another.
 //  3 + 8. Headings with data-split-scroll (services, before and after, the call band): the same, once, as they scroll in.
 //  2. Before and after photos: enter one after another once their row is well inside the screen.
 //  7. Service cards: enter one after another the same way.
-// 11. The compare slider: its line glides aside once and back, so people see it can be dragged.
+//
+// Hebrew: the words come in reading order, right to left (SplitText keeps the DOM order, which is the reading order),
+// with a clear gap between them, and each word glides in slightly from the right as it rises, so the movement
+// follows the direction the eye reads in.
 (() => {
   const root = document.documentElement;
   const show = () => root.classList.remove('split-wait');
@@ -12,12 +15,13 @@
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) { show(); return; }
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
+  const rtl = getComputedStyle(root).direction === 'rtl';
   // soft, not bouncy: an ease-out that settles without overshoot
-  const reveal = { yPercent: 100, duration: 0.9, ease: 'power3.out', stagger: 0.09 };
+  const reveal = { yPercent: 100, xPercent: rtl ? 14 : -14, duration: 1, ease: 'power3.out' };
   const split = (el, onSplit) => SplitText.create(el, {
-    type: 'words',
+    type: 'words',          // whole words only: Hebrew letters are never pulled apart
     wordsClass: 'split-word',
-    mask: 'words',          // each word rises inside its own clip, so it appears from below its line
+    mask: 'words',          // each word comes in inside its own clip, so it appears out of its own line
     autoSplit: true,        // re-split if the line breaks change (rotation, resize)
     onSplit,
   });
@@ -44,12 +48,12 @@
       const hero = document.querySelector('[data-split-hero]');
       if (hero) split(hero, (self) => {
         gsap.set(hero, { visibility: 'visible' });
-        return gsap.from(self.words, { ...reveal, delay: 0.15 });
+        return gsap.from(self.words, { ...reveal, stagger: 0.18, delay: 0.15 });
       });
 
       gsap.utils.toArray('[data-split-scroll]').forEach((el) => split(el, (self) => {
         gsap.set(el, { visibility: 'visible' });
-        return gsap.from(self.words, { ...reveal, stagger: 0.07, scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
+        return gsap.from(self.words, { ...reveal, stagger: 0.12, scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
       }));
       show();
     });
@@ -57,28 +61,10 @@
     // 7. service cards
     enterInTurn(gsap.utils.toArray('.service'), { stagger: 0.1 });
 
-    // 2. before and after photos (the featured slider is not part of this: it has its own hint below)
+    // 2. before and after photos
     enterInTurn(gsap.utils.toArray('.work .work__shot'));
     // the "show all" button reveals more cards: measure the page again so their photos enter the same way
     document.addEventListener('works:opened', () => ScrollTrigger.refresh());
-
-    // 11. the slider's hint: once it is well inside the screen, the line glides to show more "after" and back.
-    //     Skipped if the visitor already touched the slider.
-    const cmp = document.querySelector('[data-compare]');
-    if (cmp && cmp.compareSetPos) {
-      const state = { p: 50 };
-      let tl = null;
-      const stop = () => { tl?.kill(); tl = null; };
-      cmp.addEventListener('compare:touched', stop);
-      ScrollTrigger.create({
-        trigger: cmp, start: 'top 60%', once: true,
-        onEnter: () => {
-          tl = gsap.timeline({ delay: 0.3, onUpdate: () => cmp.compareSetPos(state.p) })
-            .to(state, { p: 68, duration: 0.7, ease: 'power2.inOut' })
-            .to(state, { p: 50, duration: 0.8, ease: 'power2.inOut' });
-        },
-      });
-    }
   });
 
   // with reduced motion, nothing is split or moved

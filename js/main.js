@@ -29,44 +29,6 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   new IntersectionObserver(([entry]) => set(entry.isIntersecting)).observe(heroActions);
 })();
 
-// 2. Featured job: drag anywhere on the photo (or use the arrow keys) to move the line between before and after.
-(() => {
-  const box = document.querySelector('[data-compare]');
-  if (!box) return;
-  const range = box.querySelector('.compare__range');
-  let dragging = false;
-
-  const setPos = (p) => {
-    p = Math.min(100, Math.max(0, p));
-    box.style.setProperty('--pos', p + '%');
-    range.value = String(Math.round(p));
-  };
-  const fromPointer = (e) => {
-    const r = box.getBoundingClientRect();
-    setPos(((e.clientX - r.left) / r.width) * 100);
-  };
-
-  box.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0) return;
-    dragging = true;
-    box.setPointerCapture(e.pointerId);     // keep following the finger even outside the photo
-    box.classList.add('is-dragging');
-    box.dispatchEvent(new Event('compare:touched'));
-    fromPointer(e);
-  });
-  box.addEventListener('pointermove', (e) => { if (dragging) fromPointer(e); });
-  const end = () => { dragging = false; box.classList.remove('is-dragging'); };
-  box.addEventListener('pointerup', end);
-  box.addEventListener('pointercancel', end);
-
-  // keyboard and screen readers use the hidden range input
-  range.addEventListener('input', () => { box.dispatchEvent(new Event('compare:touched')); setPos(+range.value); });
-  box.addEventListener('click', () => range.focus({ preventScroll: true }));
-
-  // the hint animation (js/animations.js) moves the line through this hook
-  box.compareSetPos = setPos;
-})();
-
 // Tap a gallery photo to see it large. A native <dialog>: Esc closes it, focus stays inside, and it returns to the photo.
 // 9. It opens with a short soft fade.  10. A job with before and after switches between them (buttons, arrow keys, swipe).
 (() => {
