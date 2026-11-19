@@ -13,6 +13,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Assistant:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  // the split headings wait for GSAP only when the visitor has not asked for reduced motion
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('split-wait');
+    setTimeout(() => document.documentElement.classList.remove('split-wait'), 2500);
+  }
+</script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -62,7 +69,7 @@
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap hero__grid">
       <div>
-        <h1 id="hero-h" class="enter">דוד אינסטלציה</h1>
+        <h1 id="hero-h" data-split-hero>דוד אינסטלציה</h1>
         <p class="hero__values enter enter--2">אמינות<span aria-hidden="true">|</span>שירות<span aria-hidden="true">|</span>מחיר</p>
         <p class="hero__lead enter enter--2">מקצועיות ללא פשרות במחירים נוחים לכיס. מוסמך ומנוסה, זמין 24/6 – לכל תקלה, בכל שעה.</p>
         <div class="hero__actions enter enter--3">
@@ -142,7 +149,7 @@
   <section class="callband" aria-labelledby="call-h">
     <div class="wrap">
       <div>
-        <h2 id="call-h">יש תקלה באינסטלציה? דוד כאן.</h2>
+        <h2 id="call-h" data-split-scroll>יש תקלה באינסטלציה? דוד כאן.</h2>
         <p>שיחה או הודעת וואטסאפ – לכל תקלה, בכל שעה.</p>
       </div>
       <div class="callband__actions">
@@ -200,6 +207,10 @@
   </a>
 </div>
 
-<script src="js/main.js"></script>
+<script src="vendor/gsap/gsap.min.js" defer></script>
+<script src="vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="vendor/gsap/SplitText.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/animations.js" defer></script>
 </body>
 </html>

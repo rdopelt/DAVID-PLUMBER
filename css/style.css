@@ -222,3 +222,9 @@ a { color: inherit; text-underline-offset: 0.2em; }
 @media (max-width: 360px) {
   .header .btn { display: none; }
 }
+
+/* ---------- GSAP word reveals (js/animations.js) ---------- */
+/* until GSAP has split a heading, it stays hidden so it never flashes; with reduced motion this class is never set */
+.split-wait [data-split-hero], .split-wait [data-split-scroll] { visibility: hidden; }
+/* SplitText's word masks: keep the space between Hebrew words and the line height unchanged */
+[data-split-hero] .split-word-mask, [data-split-scroll] .split-word-mask { padding-bottom: 0.12em; margin-bottom: -0.12em; }
