@@ -1,0 +1,3 @@
+# Netlify: publish only the site's own files (the public folder). No build step: the site is plain HTML, CSS and JS.
+[build]
+  publish = "public"

@@ -8,7 +8,29 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="דוד אינסטלציה: תיקוני אינסטלציה לבית, א׳–ה׳ בכל שעה">
 <meta property="og:description" content="אינסטלטור מוסמך ומנוסה לתיקון כל תקלה, במחירים נוחים לכיס.">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="דוד אינסטלציה">
+<!-- once the site has its address, these two become full URLs (https://<address>/share.jpg) and a canonical link is added -->
+<meta property="og:image" content="share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#eaf5fb">
+<!-- business details for Google (schema.org): name, phone, email and opening hours, as on the page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "name": "דוד אינסטלציה",
+  "description": "שירות תיקונים לכל בעיות האינסטלציה: תיקונים ללא הרס, פתיחת סתימות, איתור ותיקון נזילות, ברזים, ניאגרות וסניטריה, דודי שמש ודודי חשמל.",
+  "telephone": "+972-55-963-5310",
+  "email": "David.gimi12@gmail.com",
+  "image": "share.jpg",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "00:00", "closes": "23:59" }
+  ]
+}
+</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +99,7 @@
         <p class="hero__lead enter enter--2">מקצועיות ללא פשרות במחירים נוחים לכיס. מוסמך ומנוסה, זמין לכל תקלה בימים א׳–ה׳ בכל שעה, ובשישי למקרי חירום.</p>
         <div class="hero__actions enter enter--3">
           <a class="btn btn--call btn--lg" href="tel:+972559635310"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>התקשרו עכשיו</a>
-          <a class="btn btn--ghost btn--lg" href="https://wa.me/972559635310"><img src="assets/icons/whatsapp.svg" alt="" width="20" height="20">כתבו בוואטסאפ</a>
+          <a class="btn btn--ghost btn--lg" href="https://wa.me/972559635310"><img src="images/whatsapp.svg" alt="" width="20" height="20">כתבו בוואטסאפ</a>
         </div>
       </div>
 
@@ -142,7 +164,7 @@
       <!-- one pair of actions for every service -->
       <div class="services__actions">
         <a class="btn btn--call btn--lg" href="tel:+972559635310"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>התקשרו עכשיו</a>
-        <a class="btn btn--ghost btn--lg" href="https://wa.me/972559635310"><img src="assets/icons/whatsapp.svg" alt="" width="20" height="20">כתבו בוואטסאפ</a>
+        <a class="btn btn--ghost btn--lg" href="https://wa.me/972559635310"><img src="images/whatsapp.svg" alt="" width="20" height="20">כתבו בוואטסאפ</a>
       </div>
     </div>
   </section>
@@ -492,14 +514,14 @@
     <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 15V3.5M4 8.5 9 3.5l5 5"/></svg>
   </button>
   <a class="float__btn float__wa" href="https://wa.me/972559635310" aria-label="שלחו לי הודעה בוואטסאפ">
-    <img src="assets/icons/whatsapp.svg" alt="" width="30" height="30">
+    <img src="images/whatsapp.svg" alt="" width="30" height="30">
   </a>
 </nav>
 
 <!-- phone only: call and WhatsApp at the foot of the screen, once the hero's own buttons have scrolled away -->
 <nav class="mbar" aria-label="יצירת קשר מהירה" data-mbar>
   <a class="btn btn--call" href="tel:+972559635310"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>התקשרו</a>
-  <a class="btn btn--ghost" href="https://wa.me/972559635310"><img src="assets/icons/whatsapp.svg" alt="" width="20" height="20">וואטסאפ</a>
+  <a class="btn btn--ghost" href="https://wa.me/972559635310"><img src="images/whatsapp.svg" alt="" width="20" height="20">וואטסאפ</a>
 </nav>
 
 <script src="vendor/gsap/gsap.min.js" defer></script>
