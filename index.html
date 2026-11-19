@@ -58,6 +58,7 @@
     </a>
     <nav class="nav" aria-label="ראשי">
       <a href="#services">שירותים</a>
+      <a href="#how">איך זה עובד</a>
       <a href="#work">לפני ואחרי</a>
       <a href="#contact">יצירת קשר</a>
     </nav>
@@ -102,7 +103,7 @@
   <section class="section" id="services" aria-labelledby="services-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="services-h">השירותים של דוד</h2>
+        <h2 id="services-h" data-split-scroll>השירותים של דוד</h2>
         <p>בחרו את התקלה ושלחו לדוד הודעה, או התקשרו ישירות.</p>
       </div>
       <ul class="services">
@@ -146,12 +147,64 @@
     </div>
   </section>
 
+  <!-- how it works: three steps; the numbers carry the order -->
+  <section class="section section--steps" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="how-h">איך זה עובד</h2>
+        <p>שלושה צעדים, מהשיחה ועד שהתקלה מאחוריכם.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <span class="step__icon" aria-hidden="true"><svg><use href="#i-phone"/></svg></span>
+          <h3>מתקשרים או כותבים בוואטסאפ</h3>
+          <p>ספרו לדוד מה קרה. בוואטסאפ אפשר גם לצרף תמונה של התקלה.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <span class="step__icon" aria-hidden="true"><svg><use href="#i-drop"/></svg></span>
+          <h3>דוד מגיע ומאתר את הבעיה</h3>
+          <p>מאתר את מקור התקלה, ולא רק את מה שרואים מבחוץ.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <span class="step__icon" aria-hidden="true"><svg><use href="#i-wrench"/></svg></span>
+          <h3>התקלה מתוקנת</h3>
+          <p>תיקון מקצועי ללא פשרות, במחיר נוח לכיס.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <!-- before and after: David's own photographs (images/work), titles from gallery.json -->
   <section class="section section--tint" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="work-h">לפני ואחרי</h2>
+        <h2 id="work-h" data-split-scroll>לפני ואחרי</h2>
         <p>תמונות אמיתיות מעבודות שדוד ביצע: ביוב, צנרת, דודים, אמבטיה ומטבח.</p>
+      </div>
+      <!-- the featured job: drag the handle (or use the arrow keys) to compare; both photos are framed alike -->
+      <div class="feature">
+        <div class="feature__text">
+          <span class="work__cat">ברזים וצנרת</span>
+          <h3 class="feature__title">החלפת מחלקי מים של מערכת הסקות</h3>
+          <p>גררו את הידית על התמונה כדי לראות את ההבדל בין לפני לאחרי.</p>
+        </div>
+        <div class="compare" data-compare style="--pos: 50%">
+          <img class="compare__img" src="images/work/heating-water-manifolds-before.webp"
+               srcset="images/work/heating-water-manifolds-before.webp 720w, images/work/heating-water-manifolds-before-lg.webp 1200w"
+               sizes="(max-width: 640px) 92vw, 520px" width="720" height="960" alt="לפני: מחלקי המים הישנים של מערכת ההסקה" loading="lazy" decoding="async">
+          <div class="compare__after">
+            <img class="compare__img" src="images/work/heating-water-manifolds-after.webp"
+                 srcset="images/work/heating-water-manifolds-after.webp 720w, images/work/heating-water-manifolds-after-lg.webp 1200w"
+                 sizes="(max-width: 640px) 92vw, 520px" width="720" height="960" alt="אחרי: מחלקי מים חדשים מפליז" loading="lazy" decoding="async">
+          </div>
+          <span class="work__tag compare__tag compare__tag--before" aria-hidden="true">לפני</span>
+          <span class="work__tag work__tag--after compare__tag compare__tag--after" aria-hidden="true">אחרי</span>
+          <div class="compare__line" aria-hidden="true"><span class="compare__knob"><svg viewBox="0 0 24 24"><path d="M9 7 4 12l5 5M15 7l5 5-5 5"/></svg></span></div>
+          <input class="compare__range" type="range" min="0" max="100" value="50" dir="ltr" aria-label="השוואה בין לפני לאחרי: כמה מתמונת האחרי מוצג">
+        </div>
       </div>
       <ul class="works" id="works-list">
         <li class="work">
@@ -361,6 +414,10 @@
     <img class="lightbox__img" alt="">
     <figcaption class="lightbox__cap" id="lightbox-cap"></figcaption>
   </figure>
+  <div class="lightbox__switch" role="group" aria-label="מעבר בין לפני לאחרי" hidden>
+    <button type="button" data-lb-go="before">לפני</button>
+    <button type="button" data-lb-go="after">אחרי</button>
+  </div>
 </dialog>
 
 <!-- floating buttons the brief asks for -->
@@ -368,10 +425,16 @@
   <button class="float__btn float__top" type="button" aria-label="חזרה לראש הדף" data-hidden inert data-to-top>
     <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 15V3.5M4 8.5 9 3.5l5 5"/></svg>
   </button>
-  <a class="float__btn" href="https://wa.me/972559635310" aria-label="שליחת הודעה בוואטסאפ לדוד">
+  <a class="float__btn float__wa" href="https://wa.me/972559635310" aria-label="שליחת הודעה בוואטסאפ לדוד">
     <img src="assets/icons/whatsapp.svg" alt="" width="30" height="30">
   </a>
 </div>
+
+<!-- phone only: call and WhatsApp at the foot of the screen, once the hero's own buttons have scrolled away -->
+<nav class="mbar" aria-label="יצירת קשר מהירה" data-mbar>
+  <a class="btn btn--call" href="tel:+972559635310"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>התקשרו</a>
+  <a class="btn btn--ghost" href="https://wa.me/972559635310"><img src="assets/icons/whatsapp.svg" alt="" width="20" height="20">וואטסאפ</a>
+</nav>
 
 <script src="vendor/gsap/gsap.min.js" defer></script>
 <script src="vendor/gsap/ScrollTrigger.min.js" defer></script>

@@ -256,8 +256,8 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .work__zoom { display: block; width: 100%; height: 100%; padding: 0; border: 0; margin: 0; background: none; cursor: zoom-in; border-radius: 0; }
 .work__zoom:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; border-radius: 0; }
 .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
-  background: rgb(10 26 40 / 0.97); color: var(--white); }
-.lightbox::backdrop { background: rgb(10 26 40 / 0.97); }
+  background: #0a1a28; color: var(--white); }
+.lightbox::backdrop { background: #0a1a28; }
 .lightbox[open] { display: grid; place-items: center; }
 .lightbox__figure { margin: 0; display: grid; justify-items: center; gap: 14px; padding: 64px 16px 24px; max-width: 100%; max-height: 100%; }
 .lightbox__img { max-width: min(92vw, 1600px); max-height: calc(100dvh - 160px); width: auto; height: auto; object-fit: contain;
@@ -271,3 +271,70 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .lightbox__close:active { transform: scale(0.95); }
 @media (hover: hover) and (pointer: fine) { .lightbox__close:hover { background: rgb(255 255 255 / 0.24); } }
 html.has-lightbox { overflow: hidden; }
+
+/* ---------- how it works ---------- */
+.section--steps { background: var(--beige); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: none; }
+.step { position: relative; background: var(--white); border-radius: var(--r-md); padding: 32px 28px 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
+.step__num { position: absolute; top: 18px; inset-inline-end: 24px; font-family: var(--font-display); font-weight: 600; font-size: 56px; line-height: 1;
+  color: var(--sky-200); font-variant-numeric: tabular-nums; }
+.step__icon { width: 52px; height: 52px; border-radius: 50%; background: var(--sky-100); color: var(--blue); display: grid; place-items: center; }
+.step__icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.step h3 { margin-top: 20px; font-size: 21px; font-weight: 500; }
+.step p { margin-top: 8px; color: var(--muted); }
+
+/* ---------- featured job: drag to compare ---------- */
+.feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: center; margin-bottom: 56px;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; box-shadow: var(--shadow-sm); }
+.feature__title { margin-top: 8px; font-size: clamp(24px, 2.2vw, 32px); font-weight: 600; line-height: 1.3; }
+.feature__text p { margin-top: 12px; color: var(--muted); font-size: 18px; max-width: 36ch; }
+.compare { position: relative; aspect-ratio: 3 / 4; max-height: 680px; width: 100%; justify-self: center; overflow: hidden; border-radius: var(--r-md);
+  background: var(--sky-100); touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
+.compare__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+/* the "after" photo shows to the left of the handle (in Hebrew the story reads right to left: before, then after) */
+.compare__after { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.compare__line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: var(--white);
+  box-shadow: 0 0 0 1px rgb(19 49 74 / 0.12); pointer-events: none; }
+.compare__knob { position: absolute; top: 50%; left: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 50%; background: var(--white);
+  color: var(--navy); display: grid; place-items: center; box-shadow: var(--shadow-md); transition: transform 160ms var(--ease-out); }
+.compare__knob svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.compare.is-dragging .compare__knob { transform: scale(0.94); }
+.compare__tag { pointer-events: none; }
+.compare__tag--after { inset-inline-start: auto; inset-inline-end: 10px; }
+.compare__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
+.compare:has(.compare__range:focus-visible) .compare__knob { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+/* ---------- phone bar: call and WhatsApp under the thumb ---------- */
+.mbar { display: none; }
+@media (max-width: 640px) {
+  .mbar { position: fixed; z-index: 45; inset-inline: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgb(255 255 255 / 0.98); border-top: 1px solid var(--line);
+    box-shadow: 0 -4px 16px rgb(19 49 74 / 0.08); }
+  .mbar .btn { min-height: 52px; font-size: 17px; padding: 0 12px; }
+  .mbar .btn img { width: 20px; height: 20px; }
+  .mbar[data-off] { visibility: hidden; }
+  body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+  .float__wa { display: none; }
+  .float { bottom: calc(86px + env(safe-area-inset-bottom)); }
+}
+
+/* ---------- lightbox: before / after switch ---------- */
+.lightbox__switch { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+  display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgb(255 255 255 / 0.12); }
+.lightbox__switch[hidden] { display: none; }
+.lightbox__switch button { min-width: 96px; min-height: 44px; padding: 0 20px; border: 0; border-radius: 999px; background: transparent; color: var(--white);
+  font: 600 17px/1 var(--font-text); cursor: pointer; transition: background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out); }
+.lightbox__switch button:active { transform: scale(0.97); }
+.lightbox__switch button[aria-pressed="true"] { background: var(--white); color: var(--navy); }
+.lightbox:has(.lightbox__switch:not([hidden])) .lightbox__figure { padding-bottom: 88px; }
+.lightbox:has(.lightbox__switch:not([hidden])) .lightbox__img { max-height: calc(100dvh - 230px); }
+
+@media (max-width: 960px) {
+  .steps { grid-template-columns: 1fr; gap: 16px; }
+  .feature { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+  .compare { max-width: 520px; }
+}
+@media (max-width: 640px) {
+  .feature { padding: 20px; margin-bottom: 40px; }
+  .step { padding: 24px 22px 22px; }
+}
