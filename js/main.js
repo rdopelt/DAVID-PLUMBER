@@ -67,10 +67,11 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   };
 
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.work__zoom');
+    // a tap on the photo opens that photo; a tap anywhere else on the job's card opens its first photo ("before")
+    const card = e.target.closest('.work');
+    const btn = e.target.closest('.work__zoom') || card?.querySelector('.work__zoom');
     if (!btn) return;
-    const card = btn.closest('.work');
-    shots = [...card.querySelectorAll('.work__zoom')].map((b) => ({ btn: b, tag: b.parentElement.querySelector('.work__tag')?.textContent.trim() }));
+    shots = [...btn.closest('.work').querySelectorAll('.work__zoom')].map((b) => ({ btn: b, tag: b.parentElement.querySelector('.work__tag')?.textContent.trim() }));
     opener = btn;
     sw.hidden = shots.length < 2;
     show(shots.findIndex((s) => s.btn === btn));

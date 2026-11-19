@@ -361,3 +361,42 @@ body { position: relative; }
   .service h3 { margin-top: 0; font-size: 18px; line-height: 1.35; }
   .service p { margin-top: 2px; font-size: 15px; line-height: 1.55; }
 }
+
+/* ---------- gallery: the whole card is a way in (hover lift on a mouse, click anywhere opens the photos) ---------- */
+.work { cursor: zoom-in; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms ease; }
+.work__shot img { transition: transform 400ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .work:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--sky-300); }
+  .work:hover .work__shot img { transform: scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work, .work__shot img { transition: box-shadow 200ms ease, border-color 200ms ease; }
+  .work:hover, .work:hover .work__shot img { transform: none; }
+}
+
+/* ---------- phone: type sized for a phone, everything inside the screen ---------- */
+@media (max-width: 640px) {
+  .hero h1 { font-size: clamp(32px, 9.4vw, 38px); }
+  .hero__values { font-size: 19px; margin-top: 10px; }
+  .hero__lead { font-size: 16.5px; margin-top: 16px; }
+  .hero__actions { margin-top: 24px; }
+  .btn--lg { min-height: 52px; font-size: 17px; }
+  .help__title { font-size: 20px; }
+  .help__phone a { font-size: 22px; }
+  .chip { font-size: 15px; padding: 0 13px; }
+  .section { padding: 56px 0; }
+  .section-head h2 { font-size: clamp(25px, 7vw, 28px); }
+  .section-head p { font-size: 16px; }
+  .work h3 { font-size: 16.5px; }
+  .callband { padding: 48px 0; }
+  .callband h2 { font-size: clamp(23px, 6.6vw, 26px); }
+  .callband p { font-size: 16.5px; }
+  .callband__phone { font-size: 26px; }
+  .topbar { font-size: 14px; }
+  .footer { padding-top: 48px; }
+  .footer li a, .footer li span { min-height: 36px; }
+  /* the reviews run to the screen's edge, so the next card peeks in from the edge, not from the page margin */
+  .reviews { margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut); scroll-padding-inline: var(--gut); }
+  .review { flex-basis: 80%; }
+  .review__text p { font-size: 15.5px; }
+}
