@@ -61,8 +61,20 @@
     // 7. service cards
     enterInTurn(gsap.utils.toArray('.service'), { stagger: 0.1 });
 
-    // 2. before and after photos
-    enterInTurn(gsap.utils.toArray('.work .work__shot'));
+    // 2. before and after photos. On a computer: the grid, row by row. On a phone the jobs sit in a sideways carousel,
+    //    so the photos of the jobs on screen enter in turn once the carousel is well inside the screen.
+    const photos = gsap.matchMedia();
+    photos.add('(min-width: 641px)', () => enterInTurn(gsap.utils.toArray('.work .work__shot')));
+    photos.add('(max-width: 640px)', () => {
+      const list = document.getElementById('works-list');
+      if (!list) return;
+      const firstShots = [...list.querySelectorAll('.work')].slice(0, 2).flatMap((w) => [...w.querySelectorAll('.work__shot')]);
+      gsap.set(firstShots, { autoAlpha: 0, y: 24 });
+      ScrollTrigger.create({
+        trigger: list, start: 'top 82%', once: true,
+        onEnter: () => gsap.to(firstShots, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.12, clearProps: 'transform' }),
+      });
+    });
     // the "show all" button reveals more cards: measure the page again so their photos enter the same way
     document.addEventListener('works:opened', () => ScrollTrigger.refresh());
 

@@ -153,9 +153,18 @@
         <h2 id="work-h" data-split-scroll>לפני ואחרי</h2>
         <p>תמונות אמיתיות מעבודות שדוד ביצע: ביוב, צנרת, דודים, אמבטיה ומטבח.</p>
       </div>
+      <div class="works-filter" role="group" aria-label="סינון העבודות לפי סוג">
+        <button type="button" data-filter="all" aria-pressed="true">הכל</button>
+        <button type="button" data-filter="sewer" aria-pressed="false">ביוב וסתימות</button>
+        <button type="button" data-filter="pipes" aria-pressed="false">ברזים וצנרת</button>
+        <button type="button" data-filter="heaters" aria-pressed="false">דודי שמש וחשמל</button>
+        <button type="button" data-filter="bath" aria-pressed="false">אמבטיה ומטבח</button>
+      </div>
+      <div class="works-carousel" data-carousel>
       <ul class="works" id="works-list">
-        <li class="work">
+        <li data-cat="sewer" class="work">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/sewer-buried-manhole-before-lg.webp" aria-label="הגדלת התמונה – לפני: גילוי ואיתור בור ביוב קבור. והגבהת הבור לגובה הרצפה וסגירה"><img src="images/work/sewer-buried-manhole-before.webp" width="720" height="539" alt="לפני: גילוי ואיתור בור ביוב קבור. והגבהת הבור לגובה הרצפה וסגירה" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/sewer-buried-manhole-after-lg.webp" aria-label="הגדלת התמונה – אחרי: גילוי ואיתור בור ביוב קבור. והגבהת הבור לגובה הרצפה וסגירה"><img src="images/work/sewer-buried-manhole-after.webp" width="720" height="539" alt="אחרי: גילוי ואיתור בור ביוב קבור. והגבהת הבור לגובה הרצפה וסגירה" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -164,8 +173,9 @@
             <h3>גילוי ואיתור בור ביוב קבור. והגבהת הבור לגובה הרצפה וסגירה</h3>
           </div>
         </li>
-        <li class="work">
+        <li data-cat="bath" class="work">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/toilet-and-cistern-before-lg.webp" aria-label="הגדלת התמונה – לפני: החלפת אסלה וניאגרה"><img src="images/work/toilet-and-cistern-before.webp" width="540" height="720" alt="לפני: החלפת אסלה וניאגרה" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/toilet-and-cistern-after-lg.webp" aria-label="הגדלת התמונה – אחרי: החלפת אסלה וניאגרה"><img src="images/work/toilet-and-cistern-after.webp" width="540" height="720" alt="אחרי: החלפת אסלה וניאגרה" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -174,8 +184,9 @@
             <h3>החלפת אסלה וניאגרה</h3>
           </div>
         </li>
-        <li class="work">
+        <li data-cat="pipes" class="work">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/heating-water-manifolds-before-lg.webp" aria-label="הגדלת התמונה – לפני: החלפת מחלקי מים של מערכת הסקות"><img src="images/work/heating-water-manifolds-before.webp" width="540" height="720" alt="לפני: החלפת מחלקי מים של מערכת הסקות" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/heating-water-manifolds-after-lg.webp" aria-label="הגדלת התמונה – אחרי: החלפת מחלקי מים של מערכת הסקות"><img src="images/work/heating-water-manifolds-after.webp" width="540" height="720" alt="אחרי: החלפת מחלקי מים של מערכת הסקות" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -184,8 +195,9 @@
             <h3>החלפת מחלקי מים של מערכת הסקות</h3>
           </div>
         </li>
-        <li class="work">
+        <li data-cat="bath" class="work">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/extra-faucet-double-sink-before-lg.webp" aria-label="הגדלת התמונה – לפני: בקשה מיוחדת: הוספת ברז נוסף לכיור כפול, כולל קידוח בשיש"><img src="images/work/extra-faucet-double-sink-before.webp" width="540" height="720" alt="לפני: בקשה מיוחדת: הוספת ברז נוסף לכיור כפול, כולל קידוח בשיש" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/extra-faucet-double-sink-after-lg.webp" aria-label="הגדלת התמונה – אחרי: בקשה מיוחדת: הוספת ברז נוסף לכיור כפול, כולל קידוח בשיש"><img src="images/work/extra-faucet-double-sink-after.webp" width="720" height="540" alt="אחרי: בקשה מיוחדת: הוספת ברז נוסף לכיור כפול, כולל קידוח בשיש" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -194,8 +206,9 @@
             <h3>בקשה מיוחדת: הוספת ברז נוסף לכיור כפול, כולל קידוח בשיש</h3>
           </div>
         </li>
-        <li class="work">
+        <li data-cat="heaters" class="work">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/closed-solar-skedul40-before-lg.webp" aria-label="הגדלת התמונה – לפני: תיקון והחלפת מקטע במערכת סולארית סגורה לצנרת סקדיול 40"><img src="images/work/closed-solar-skedul40-before.webp" width="539" height="720" alt="לפני: תיקון והחלפת מקטע במערכת סולארית סגורה לצנרת סקדיול 40" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/closed-solar-skedul40-after-lg.webp" aria-label="הגדלת התמונה – אחרי: תיקון והחלפת מקטע במערכת סולארית סגורה לצנרת סקדיול 40"><img src="images/work/closed-solar-skedul40-after.webp" width="539" height="720" alt="אחרי: תיקון והחלפת מקטע במערכת סולארית סגורה לצנרת סקדיול 40" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -204,8 +217,9 @@
             <h3>תיקון והחלפת מקטע במערכת סולארית סגורה לצנרת סקדיול 40</h3>
           </div>
         </li>
-        <li class="work">
+        <li data-cat="pipes" class="work">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/limescale-filter-entrance-before-lg.webp" aria-label="הגדלת התמונה – לפני: התקנת סנן אבנית בכניסה לדירה"><img src="images/work/limescale-filter-entrance-before.webp" width="720" height="540" alt="לפני: התקנת סנן אבנית בכניסה לדירה" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/limescale-filter-entrance-after-lg.webp" aria-label="הגדלת התמונה – אחרי: התקנת סנן אבנית בכניסה לדירה"><img src="images/work/limescale-filter-entrance-after.webp" width="540" height="720" alt="אחרי: התקנת סנן אבנית בכניסה לדירה" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -214,8 +228,9 @@
             <h3>התקנת סנן אבנית בכניסה לדירה</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="pipes" class="work work--extra">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/cold-water-manifold-before-lg.webp" aria-label="הגדלת התמונה – לפני: החלפת מחלק מים קר"><img src="images/work/cold-water-manifold-before.webp" width="540" height="720" alt="לפני: החלפת מחלק מים קר" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/cold-water-manifold-after-lg.webp" aria-label="הגדלת התמונה – אחרי: החלפת מחלק מים קר"><img src="images/work/cold-water-manifold-after.webp" width="540" height="720" alt="אחרי: החלפת מחלק מים קר" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -224,8 +239,9 @@
             <h3>החלפת מחלק מים קר</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="pipes" class="work work--extra">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/water-meter-section-before-lg.webp" aria-label="הגדלת התמונה – לפני: החלפת כל המקטע לפני ואחרי השעון כולל מפריד דיאלקטרי למניעת חלודה בעתיד"><img src="images/work/water-meter-section-before.webp" width="720" height="540" alt="לפני: החלפת כל המקטע לפני ואחרי השעון כולל מפריד דיאלקטרי למניעת חלודה בעתיד" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/water-meter-section-after-lg.webp" aria-label="הגדלת התמונה – אחרי: החלפת כל המקטע לפני ואחרי השעון כולל מפריד דיאלקטרי למניעת חלודה בעתיד"><img src="images/work/water-meter-section-after.webp" width="720" height="540" alt="אחרי: החלפת כל המקטע לפני ואחרי השעון כולל מפריד דיאלקטרי למניעת חלודה בעתיד" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -234,8 +250,9 @@
             <h3>החלפת כל המקטע לפני ואחרי השעון כולל מפריד דיאלקטרי למניעת חלודה בעתיד</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="pipes" class="work work--extra">
           <div class="work__media work__media--pair">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/rusty-section-water-corp-before-lg.webp" aria-label="הגדלת התמונה – לפני: החלפת מקטע חלוד עקב בקשה של תאגיד המים"><img src="images/work/rusty-section-water-corp-before.webp" width="720" height="405" alt="לפני: החלפת מקטע חלוד עקב בקשה של תאגיד המים" loading="lazy" decoding="async"></button><span class="work__tag" aria-hidden="true">לפני</span></figure>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/rusty-section-water-corp-after-lg.webp" aria-label="הגדלת התמונה – אחרי: החלפת מקטע חלוד עקב בקשה של תאגיד המים"><img src="images/work/rusty-section-water-corp-after.webp" width="720" height="540" alt="אחרי: החלפת מקטע חלוד עקב בקשה של תאגיד המים" loading="lazy" decoding="async"></button><span class="work__tag work__tag--after" aria-hidden="true">אחרי</span></figure>
           </div>
@@ -244,8 +261,9 @@
             <h3>החלפת מקטע חלוד עקב בקשה של תאגיד המים</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="pipes" class="work work--extra">
           <div class="work__media">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/water-softener-bypass-lg.webp" aria-label="הגדלת התמונה – העבודה: התקנת מערכת מרכך מים עם ברז עוקף ומחלק מים רכים"><img src="images/work/water-softener-bypass.webp" width="825" height="1100" alt="העבודה: התקנת מערכת מרכך מים עם ברז עוקף ומחלק מים רכים" loading="lazy" decoding="async"></button></figure>
           </div>
           <div class="work__body">
@@ -254,8 +272,9 @@
             <p>הכול בוצע בפליז איכותי, עם ברזי איקון וברזי שגיב.</p>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="pipes" class="work work--extra">
           <div class="work__media">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/meter-riser-replacement-lg.webp" aria-label="הגדלת התמונה – העבודה: החלפת עמוד למוני מים כולל אביזרים עד המונים הפרטיים. כולל קיבוע לקיר"><img src="images/work/meter-riser-replacement.webp" width="896" height="1100" alt="העבודה: החלפת עמוד למוני מים כולל אביזרים עד המונים הפרטיים. כולל קיבוע לקיר" loading="lazy" decoding="async"></button></figure>
           </div>
           <div class="work__body">
@@ -263,8 +282,9 @@
             <h3>החלפת עמוד למוני מים כולל אביזרים עד המונים הפרטיים. כולל קיבוע לקיר</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="pipes" class="work work--extra">
           <div class="work__media">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/filter-check-valve-meter-lg.webp" aria-label="הגדלת התמונה – העבודה: התקנת סנן אבנית ואל חוזר לפני ואחרי המונה מים"><img src="images/work/filter-check-valve-meter.webp" width="1100" height="825" alt="העבודה: התקנת סנן אבנית ואל חוזר לפני ואחרי המונה מים" loading="lazy" decoding="async"></button></figure>
           </div>
           <div class="work__body">
@@ -272,8 +292,9 @@
             <h3>התקנת סנן אבנית ואל חוזר לפני ואחרי המונה מים</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="heaters" class="work work--extra">
           <div class="work__media">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/closed-solar-leak-repairs-lg.webp" aria-label="הגדלת התמונה – העבודה: תיקוני בעיות ונזילות במערכת סולארית סגורה"><img src="images/work/closed-solar-leak-repairs.webp" width="1100" height="825" alt="העבודה: תיקוני בעיות ונזילות במערכת סולארית סגורה" loading="lazy" decoding="async"></button></figure>
           </div>
           <div class="work__body">
@@ -281,8 +302,9 @@
             <h3>תיקוני בעיות ונזילות במערכת סולארית סגורה</h3>
           </div>
         </li>
-        <li class="work work--extra">
+        <li data-cat="bath" class="work work--extra">
           <div class="work__media">
+            <span class="work__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4M11 8.5v5M8.5 11h5"/></svg>לחצו להגדלה</span>
             <figure class="work__shot"><button class="work__zoom" type="button" data-full="images/work/restaurant-kitchen-connections-lg.webp" aria-label="הגדלת התמונה – העבודה: הכנת נקודות חיבור לציוד מטבח במסעדה"><img src="images/work/restaurant-kitchen-connections.webp" width="619" height="1100" alt="העבודה: הכנת נקודות חיבור לציוד מטבח במסעדה" loading="lazy" decoding="async"></button></figure>
           </div>
           <div class="work__body">
@@ -291,6 +313,15 @@
           </div>
         </li>
       </ul>
+      <div class="carousel__nav works__nav">
+        <button class="carousel__btn" type="button" aria-controls="works-list" aria-label="העבודה הקודמת" data-carousel-prev>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button class="carousel__btn" type="button" aria-controls="works-list" aria-label="העבודה הבאה" data-carousel-next>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+      </div>
       <div class="works__more">
         <button class="btn btn--ghost" type="button" aria-expanded="false" aria-controls="works-list" data-works-more>הצגת כל 14 העבודות</button>
       </div>

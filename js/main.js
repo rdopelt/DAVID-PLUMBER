@@ -143,19 +143,18 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   });
 })();
 
-// Reviews carousel: two buttons move it by one card. It never moves on its own.
+// Carousels (the reviews, and the before/after jobs on a phone): two buttons move one card. They never move on their own.
 // In Hebrew the track runs right to left, so "next" scrolls toward the left.
-(() => {
-  const root = document.querySelector('[data-carousel]');
-  if (!root) return;
-  const track = root.querySelector('.reviews');
+document.querySelectorAll('[data-carousel]').forEach((root) => {
+  const track = root.querySelector('.reviews, .works');
   const prev = root.querySelector('[data-carousel-prev]');
   const next = root.querySelector('[data-carousel-next]');
+  if (!track || !prev || !next) return;
   const rtl = getComputedStyle(track).direction === 'rtl';
 
   const step = () => {
-    const card = track.querySelector('.review');
-    return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 16) : track.clientWidth;
+    const card = [...track.children].find((c) => c.offsetParent);   // the first card on show
+    return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 12) : track.clientWidth;
   };
   const go = (dir) => track.scrollBy({ left: dir * step() * (rtl ? -1 : 1), behavior: reduceMotion() ? 'auto' : 'smooth' });
 
@@ -170,5 +169,22 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   next.addEventListener('click', () => go(1));
   track.addEventListener('scroll', update, { passive: true });
   addEventListener('resize', update);
+  track.addEventListener('carousel:changed', update);
   update();
+});
+
+// Phone gallery: the category chips show only that kind of job in the carousel, from its first job.
+(() => {
+  const bar = document.querySelector('.works-filter');
+  const list = document.getElementById('works-list');
+  if (!bar || !list) return;
+  bar.addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-filter]');
+    if (!chip) return;
+    const want = chip.dataset.filter;
+    bar.querySelectorAll('[data-filter]').forEach((b) => b.setAttribute('aria-pressed', String(b === chip)));
+    list.querySelectorAll('.work').forEach((w) => w.classList.toggle('is-out', want !== 'all' && w.dataset.cat !== want));
+    list.scrollTo({ left: 0, behavior: 'auto' });
+    list.dispatchEvent(new Event('carousel:changed'));
+  });
 })();

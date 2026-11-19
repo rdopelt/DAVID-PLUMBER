@@ -363,15 +363,42 @@ body { position: relative; }
 }
 
 /* ---------- gallery: the whole card is a way in (hover lift on a mouse, click anywhere opens the photos) ---------- */
-.work { cursor: zoom-in; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms ease; }
-.work__shot img { transition: transform 400ms var(--ease-out); }
+.work { position: relative; cursor: zoom-in; transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out), border-color 200ms ease; }
+.work__media { position: relative; }
+.work__shot img { transition: transform 500ms var(--ease-out); }
+/* the hint over the photos: hidden until the pointer is on the card */
+.work__hint { position: absolute; z-index: 2; left: 50%; bottom: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px 6px 14px;
+  border-radius: 999px; background: rgb(19 49 74 / 0.82); color: var(--white); font-size: 14px; font-weight: 600; white-space: nowrap; pointer-events: none;
+  opacity: 0; transform: translate(-50%, 6px); transition: opacity 200ms ease, transform 260ms var(--ease-out); }
+.work__hint svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 @media (hover: hover) and (pointer: fine) {
-  .work:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--sky-300); }
-  .work:hover .work__shot img { transform: scale(1.03); }
+  .work:hover { transform: translateY(-8px); border-color: var(--sky-300);
+    box-shadow: 0 4px 8px rgb(19 49 74 / 0.06), 0 22px 44px rgb(19 49 74 / 0.18); }
+  .work:hover .work__shot img { transform: scale(1.06); }
+  .work:hover .work__hint { opacity: 1; transform: translate(-50%, 0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .work, .work__shot img { transition: box-shadow 200ms ease, border-color 200ms ease; }
+  .work, .work__shot img, .work__hint { transition: box-shadow 200ms ease, border-color 200ms ease, opacity 200ms ease; }
   .work:hover, .work:hover .work__shot img { transform: none; }
+  .work:hover .work__hint { transform: translate(-50%, 0); }
+}
+
+/* gallery filter chips and arrows: phones only */
+.works-filter, .works__nav { display: none; }
+@media (max-width: 640px) {
+  .works-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: -8px 0 20px; }
+  .works-filter button { min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--sky-200); background: var(--white);
+    color: var(--navy); font: 600 15px/1 var(--font-text); cursor: pointer; transition: background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out); }
+  .works-filter button:active { transform: scale(0.97); }
+  .works-filter button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: var(--white); }
+  /* one job at a time, swiped sideways; the next one peeks in from the screen edge */
+  .works { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * var(--gut)); padding: 4px var(--gut) 12px; scroll-padding-inline: var(--gut); scrollbar-width: none; }
+  .works::-webkit-scrollbar { display: none; }
+  .works .work, .works .work--extra { display: flex; flex: 0 0 84%; scroll-snap-align: start; }
+  .works .work.is-out { display: none; }
+  .works__nav { display: flex; margin-top: 16px; }
+  .works__more { display: none; }
 }
 
 /* ---------- phone: type sized for a phone, everything inside the screen ---------- */
