@@ -146,23 +146,13 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .service { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 28px;
   box-shadow: var(--shadow-sm); transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out); scroll-margin-top: 104px; }
 .service:target { border-color: var(--blue); box-shadow: 0 0 0 3px var(--sky-200), var(--shadow-md); }
-@media (hover: hover) and (pointer: fine) { .service:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); } }
 .service__icon { width: 56px; height: 56px; border-radius: 16px; background: var(--sky-100); color: var(--blue); display: grid; place-items: center; }
 .service__icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .service h3 { margin-top: 20px; font-size: 22px; font-weight: 500; }
 .service p { margin-top: 8px; color: var(--muted); flex: 1; }
-/* two small actions at the foot of each card: call, or WhatsApp with a message about this service ready to send */
-.service__actions { display: flex; gap: 8px; margin-top: 20px; }
-.mini-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 14px;
-  border-radius: 999px; border: 1px solid var(--line); background: var(--white); color: var(--navy); font-weight: 600; font-size: 16px;
-  text-decoration: none; transition: transform 160ms var(--ease-out), background-color 200ms ease, border-color 200ms ease; }
-.mini-btn svg, .mini-btn img { width: 18px; height: 18px; flex: none; }
-.mini-btn--call { background: var(--sky-100); border-color: var(--sky-200); color: var(--blue-deep); }
-.mini-btn:active { transform: scale(0.97); }
-@media (hover: hover) and (pointer: fine) {
-  .mini-btn:hover { border-color: var(--sky-300); background: var(--sky-50); }
-  .mini-btn--call:hover { background: var(--sky-200); }
-}
+/* one pair of actions under all the services */
+.services__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+@media (max-width: 640px) { .services__actions { margin-top: 28px; } .services__actions .btn { flex: 1 1 100%; } }
 .service--other { background: var(--beige); border-style: dashed; border-color: rgb(19 49 74 / 0.18); box-shadow: none; }
 .service--other .service__icon { background: var(--white); }
 
@@ -375,4 +365,14 @@ body { position: relative; }
   .stream__drop { width: 6px; height: 8px; right: calc(var(--sx) - 3px); }
   .stream { --bucket: 18px; }
   .stream__bucket-line { stroke-width: 2.4; }
+}
+
+/* phone: the services read as a compact list, the icon beside the name */
+@media (max-width: 640px) {
+  .services { gap: 10px; }
+  .service { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; padding: 16px 18px; align-items: start; }
+  .service__icon { width: 44px; height: 44px; border-radius: 12px; grid-row: span 2; }
+  .service__icon svg { width: 22px; height: 22px; }
+  .service h3 { margin-top: 0; font-size: 18px; line-height: 1.35; }
+  .service p { margin-top: 2px; font-size: 15px; line-height: 1.55; }
 }

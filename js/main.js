@@ -18,15 +18,21 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   });
 })();
 
-// 4. Phone bar: call and WhatsApp at the foot of the screen, hidden while the hero's own two buttons are on screen
+// 4. Phone bar: call and WhatsApp at the foot of the screen, hidden while the same two buttons are already on screen
 //    (so the first screen never shows them twice). It simply appears; no motion.
 (() => {
   const bar = document.querySelector('[data-mbar]');
-  const heroActions = document.querySelector('.hero__actions');
-  if (!bar || !heroActions || !('IntersectionObserver' in window)) return;
+  // every place on the page that already shows the same two buttons: the hero and the line under the services
+  const twins = [...document.querySelectorAll('.hero__actions, .services__actions')];
+  if (!bar || !twins.length || !('IntersectionObserver' in window)) return;
   const set = (off) => { bar.toggleAttribute('data-off', off); bar.inert = off; };
+  const onScreen = new Set();
   set(true);
-  new IntersectionObserver(([entry]) => set(entry.isIntersecting)).observe(heroActions);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => (e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target)));
+    set(onScreen.size > 0);
+  });
+  twins.forEach((t) => io.observe(t));
 })();
 
 // Tap a gallery photo to see it large. A native <dialog>: Esc closes it, focus stays inside, and it returns to the photo.
