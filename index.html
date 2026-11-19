@@ -21,6 +21,7 @@
   }
 </script>
 <link rel="stylesheet" href="css/style.css">
+<script src="js/a11y-boot.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">דילוג לתוכן</a>
@@ -40,7 +41,7 @@
 </svg>
 
 <!-- top bar (reference 2): the two things a stressed visitor needs first -->
-<div class="topbar">
+<aside class="topbar" aria-label="זמינות ופרטי קשר">
   <div class="wrap">
     <span class="topbar__avail"><span class="dot" aria-hidden="true"></span>זמין א׳–ה׳ בכל שעה<span class="topbar__avail-text--long">&nbsp;· שישי לחירום בלבד · שבת סגור</span></span>
     <div class="topbar__links">
@@ -48,7 +49,7 @@
       <a class="topbar__wa" href="https://wa.me/972559635310">וואטסאפ</a>
     </div>
   </div>
-</div>
+</aside>
 
 <header class="header">
   <div class="wrap">
@@ -448,7 +449,7 @@
       <a href="#reviews">המלצות</a>
     </nav>
     <div class="footer__legal">
-      <span>&copy; 2026 דוד אינסטלציה</span>
+      <span>&copy; 2026 דוד אינסטלציה · <a href="accessibility.html">הצהרת נגישות</a></span>
       <span>WhatsApp והסמליל שלו הם סימנים מסחריים של בעליהם.</span>
     </div>
   </div>
@@ -486,14 +487,14 @@
 </div>
 
 <!-- floating buttons the brief asks for -->
-<div class="float">
+<nav class="float" aria-label="קיצורי דרך: חזרה למעלה ווואטסאפ">
   <button class="float__btn float__top" type="button" aria-label="חזרה לראש הדף" data-hidden inert data-to-top>
     <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 15V3.5M4 8.5 9 3.5l5 5"/></svg>
   </button>
   <a class="float__btn float__wa" href="https://wa.me/972559635310" aria-label="שלחו לי הודעה בוואטסאפ">
     <img src="assets/icons/whatsapp.svg" alt="" width="30" height="30">
   </a>
-</div>
+</nav>
 
 <!-- phone only: call and WhatsApp at the foot of the screen, once the hero's own buttons have scrolled away -->
 <nav class="mbar" aria-label="יצירת קשר מהירה" data-mbar>
@@ -506,5 +507,6 @@
 <script src="vendor/gsap/SplitText.min.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/animations.js" defer></script>
+<script src="js/a11y.js" defer></script>
 </body>
 </html>

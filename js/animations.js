@@ -13,6 +13,8 @@
   const show = () => root.classList.remove('split-wait');
 
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) { show(); return; }
+  // the accessibility menu's "stop animations": nothing moves at all, as with reduced motion
+  if (root.hasAttribute('data-a11y-still')) { show(); return; }
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
   const rtl = getComputedStyle(root).direction === 'rtl';

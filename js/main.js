@@ -1,4 +1,4 @@
-const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.hasAttribute('data-a11y-still');
 const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
 
 // Back-to-top button: appears once the hero has scrolled away, and is out of the Tab order while hidden.
