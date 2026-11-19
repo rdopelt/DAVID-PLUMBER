@@ -151,9 +151,18 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .service__icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .service h3 { margin-top: 20px; font-size: 22px; font-weight: 500; }
 .service p { margin-top: 8px; color: var(--muted); flex: 1; }
-.service__link { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--blue); text-decoration: none; align-self: flex-start; }
-.service__link svg { width: 18px; height: 18px; transition: transform 200ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .service__link:hover { text-decoration: underline; } .service__link:hover svg { transform: translateX(-3px); } }
+/* two small actions at the foot of each card: call, or WhatsApp with a message about this service ready to send */
+.service__actions { display: flex; gap: 8px; margin-top: 20px; }
+.mini-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 14px;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--white); color: var(--navy); font-weight: 600; font-size: 16px;
+  text-decoration: none; transition: transform 160ms var(--ease-out), background-color 200ms ease, border-color 200ms ease; }
+.mini-btn svg, .mini-btn img { width: 18px; height: 18px; flex: none; }
+.mini-btn--call { background: var(--sky-100); border-color: var(--sky-200); color: var(--blue-deep); }
+.mini-btn:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .mini-btn:hover { border-color: var(--sky-300); background: var(--sky-50); }
+  .mini-btn--call:hover { background: var(--sky-200); }
+}
 .service--other { background: var(--beige); border-style: dashed; border-color: rgb(19 49 74 / 0.18); box-shadow: none; }
 .service--other .service__icon { background: var(--white); }
 
