@@ -315,17 +315,29 @@ html.has-lightbox { overflow: hidden; }
   .step { padding: 24px 22px 22px; }
 }
 
-/* ---------- reviews: name and words only ---------- */
-.reviews { list-style: none; margin: 0; padding: 0; columns: 3 300px; column-gap: 24px; }
-.review { break-inside: avoid; margin: 0 0 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md);
-  padding: 24px 28px 24px; box-shadow: var(--shadow-sm); }
-/* the quote mark sits on its own line above the words, never over them */
-.review::before { content: "״"; display: block; height: 30px; margin-bottom: 6px; font-family: var(--font-display); font-weight: 600;
-  font-size: 64px; line-height: 0.9; color: var(--sky-300); pointer-events: none; }
-.review__text { margin: 0; }
-.review__text p { font-size: 19px; line-height: 1.65; color: var(--navy); max-width: 40ch; }
-.review__who { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
-.review__initial { width: 40px; height: 40px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--sky-100);
-  color: var(--blue); font-family: var(--font-display); font-weight: 600; font-size: 17px; }
+/* ---------- reviews: a compact carousel, name and words only ---------- */
+/* a native horizontal scroll with snap points: swipe on a phone, arrows or a trackpad on a computer; it never moves by itself */
+.reviews { list-style: none; margin: 0; padding: 4px 2px 12px; display: flex; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: 2px; scrollbar-width: none; }
+.reviews::-webkit-scrollbar { display: none; }
+.reviews:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: var(--r-md); }
+.review { flex: 0 0 calc((100% - 3 * 16px) / 4); scroll-snap-align: start; display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px; box-shadow: var(--shadow-sm); }
+.review::before { content: "״"; display: block; height: 20px; margin-bottom: 4px; font-family: var(--font-display); font-weight: 600;
+  font-size: 44px; line-height: 0.9; color: var(--sky-300); }
+.review__text { margin: 0; flex: 1; }
+.review__text p { font-size: 16px; line-height: 1.6; color: var(--navy); }
+.review__who { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 15px; }
+.review__initial { width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--sky-100);
+  color: var(--blue); font-family: var(--font-display); font-weight: 600; font-size: 14px; }
 .review__name { font-weight: 600; }
-@media (max-width: 640px) { .reviews { columns: 1; } .review { margin-bottom: 16px; padding: 20px 22px 20px; } .review__text p { font-size: 18px; } }
+.carousel__nav { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+.carousel__btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--white); color: var(--navy);
+  display: grid; place-items: center; cursor: pointer; box-shadow: var(--shadow-sm);
+  transition: transform 160ms var(--ease-out), opacity 200ms ease, border-color 200ms ease; }
+.carousel__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.carousel__btn:active { transform: scale(0.95); }
+.carousel__btn:disabled { opacity: 0.35; cursor: default; transform: none; }
+@media (hover: hover) and (pointer: fine) { .carousel__btn:not(:disabled):hover { border-color: var(--sky-300); } }
+@media (max-width: 960px) { .review { flex-basis: calc((100% - 16px) / 2.3); } }
+@media (max-width: 640px) { .review { flex-basis: 78%; } .reviews { gap: 12px; } }

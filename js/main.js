@@ -135,3 +135,33 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
     document.dispatchEvent(new Event('works:opened'));
   });
 })();
+
+// Reviews carousel: two buttons move it by one card. It never moves on its own.
+// In Hebrew the track runs right to left, so "next" scrolls toward the left.
+(() => {
+  const root = document.querySelector('[data-carousel]');
+  if (!root) return;
+  const track = root.querySelector('.reviews');
+  const prev = root.querySelector('[data-carousel-prev]');
+  const next = root.querySelector('[data-carousel-next]');
+  const rtl = getComputedStyle(track).direction === 'rtl';
+
+  const step = () => {
+    const card = track.querySelector('.review');
+    return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 16) : track.clientWidth;
+  };
+  const go = (dir) => track.scrollBy({ left: dir * step() * (rtl ? -1 : 1), behavior: reduceMotion() ? 'auto' : 'smooth' });
+
+  // the buttons go grey at the two ends
+  const update = () => {
+    const max = track.scrollWidth - track.clientWidth;
+    const pos = Math.abs(track.scrollLeft);           // RTL scrollLeft counts down from 0
+    prev.disabled = pos <= 2;
+    next.disabled = pos >= max - 2;
+  };
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  track.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();

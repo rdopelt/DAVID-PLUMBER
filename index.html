@@ -336,14 +336,15 @@
         <h2 id="reviews-h">מה הלקוחות אומרים</h2>
         <p>מתוך הביקורות של דוד אינסטלציה בגוגל.</p>
       </div>
-      <ul class="reviews">
-        <li class="review">
+      <div class="carousel" aria-roledescription="קרוסלה" aria-label="המלצות לקוחות" data-carousel>
+      <ul class="reviews" id="reviews-track" tabindex="0" aria-label="המלצות, אפשר לגלול הצידה">
+        <li class="review" aria-label="המלצה 1 מתוך 8">
           <blockquote class="review__text">
             <p>איש יקר, שירות מעולה, עם תמורה מלאה לכסף, ממליץ בחום, הבנאדם תותח בתחום</p>
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">ח</span><span class="review__name">חיים אפל</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 2 מתוך 8">
           <blockquote class="review__text">
             <p>איש מקצוע מעולה. עומד בזמנים. מילה זה מילה ושעה זה שעה.<br>
             מחירים סבירים.<br>
@@ -351,20 +352,20 @@
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">A</span><span class="review__name">Alon Binyaminov</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 3 מתוך 8">
           <blockquote class="review__text">
             <p>שירות מקצועי ואדיב.<br>
             נתן פתרונות יצירתיים שחסכו הרבה עבודה.</p>
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">E</span><span class="review__name">Eyal Ohana</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 4 מתוך 8">
           <blockquote class="review__text">
             <p>תותח ברמות סידר לנו כמה בעיות אינסטלציה ונתן שירות מעל או מעבר למצופה מחירים מצוינים</p>
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">ע</span><span class="review__name">עומר אוחנה</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 5 מתוך 8">
           <blockquote class="review__text">
             <p>שירות ויחס אישי מעולה<br>
             תודה על השירות.<br>
@@ -372,25 +373,34 @@
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">ג</span><span class="review__name">גבריאל עוקבי</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 6 מתוך 8">
           <blockquote class="review__text">
             <p>אדם אמין בעל נכונות לעזרה</p>
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">מ</span><span class="review__name">משה בן פורת</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 7 מתוך 8">
           <blockquote class="review__text">
             <p>אינסטלטור מצוין ומומלץ</p>
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">א</span><span class="review__name">אלישע בבל</span></p>
         </li>
-        <li class="review">
+        <li class="review" aria-label="המלצה 8 מתוך 8">
           <blockquote class="review__text">
             <p>אמין ומקצועי מאד</p>
           </blockquote>
           <p class="review__who"><span class="review__initial" aria-hidden="true">D</span><span class="review__name">Dror Turm</span></p>
         </li>
       </ul>
+      <div class="carousel__nav">
+        <button class="carousel__btn" type="button" aria-controls="reviews-track" aria-label="ההמלצות הקודמות" data-carousel-prev>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button class="carousel__btn" type="button" aria-controls="reviews-track" aria-label="ההמלצות הבאות" data-carousel-next>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+      </div>
     </div>
   </section>
 
