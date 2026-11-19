@@ -74,7 +74,11 @@
       const water = stream.querySelector('.stream__water');
       const drop = stream.querySelector('.stream__drop');
       const ripple = stream.querySelector('.stream__ripple');
+      const fill = stream.querySelector('.stream__fill');
       let landed = false;
+      // SVG parts: GSAP owns their transforms; the water fills from the bottom of the bucket, the ripple spreads from its centre
+      gsap.set(fill, { scaleY: 0, transformOrigin: '50% 100%' });
+      gsap.set(ripple, { transformOrigin: '50% 50%', autoAlpha: 0 });
 
       gsap.timeline({
         defaults: { ease: 'none' },
@@ -84,18 +88,22 @@
           invalidateOnRefresh: true,     // re-measure when the page height changes (e.g. "show all" jobs)
           onUpdate: (self) => {
             if (self.progress > 0.995 && !landed) {
+              // the drop lands in the bucket: the water rises a little and one ripple spreads on it
               landed = true;
-              gsap.to(drop, { autoAlpha: 0, duration: 0.25 });
-              gsap.fromTo(ripple, { scale: 0.4, autoAlpha: 0.9 }, { scale: 1.8, autoAlpha: 0, duration: 1.1, ease: 'power2.out' });
+              gsap.to(drop, { autoAlpha: 0, duration: 0.2 });
+              gsap.to(fill, { scaleY: 0.5, duration: 0.9, ease: 'power2.out', overwrite: true });
+              gsap.fromTo(ripple, { scale: 0.3, autoAlpha: 0.9 }, { scale: 1.4, autoAlpha: 0, duration: 1.2, ease: 'power2.out', delay: 0.1 });
             } else if (self.progress < 0.97 && landed) {
+              // scrolling back up: the bucket empties softly and the drop is back at the front of the stream
               landed = false;
               gsap.to(drop, { autoAlpha: 1, duration: 0.2 });
+              gsap.to(fill, { scaleY: 0, duration: 0.6, ease: 'power2.inOut', overwrite: true });
             }
           },
         },
       })
         .fromTo(water, { scaleY: 0.012 }, { scaleY: 1 }, 0)
-        .fromTo(drop, { y: () => water.offsetHeight * 0.012 }, { y: () => water.offsetHeight - 6 }, 0);
+        .fromTo(drop, { y: () => water.offsetHeight * 0.012 }, { y: () => water.offsetHeight - 4 }, 0);
     }
   });
 

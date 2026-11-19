@@ -481,7 +481,14 @@
   <svg class="stream__faucet" viewBox="0 0 34 34"><path d="M34 11H15a7 7 0 0 0-7 7v9"/><path d="M22 11V5M17 5h10"/><path d="M5 27h6"/></svg>
   <span class="stream__water"></span>
   <svg class="stream__drop" viewBox="0 0 10 13"><path d="M5 0C5 0 0 6.2 0 8.4A5 5 0 0 0 10 8.4C10 6.2 5 0 5 0Z"/></svg>
-  <span class="stream__ripple"></span>
+  <svg class="stream__bucket" viewBox="0 0 30 28">
+    <defs><clipPath id="bucket-inside"><path d="M5 9 7.9 25.5h14.2L25 9Z"/></clipPath></defs>
+    <g clip-path="url(#bucket-inside)">
+      <rect class="stream__fill" x="0" y="9" width="30" height="17"/>
+      <ellipse class="stream__ripple" cx="15" cy="17.5" rx="6" ry="1.6"/>
+    </g>
+    <path class="stream__bucket-line" d="M3 8.5h24M5 8.5 7.6 26h14.8L25 8.5"/>
+  </svg>
 </div>
 
 <!-- floating buttons the brief asks for -->
