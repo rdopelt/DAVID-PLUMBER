@@ -314,3 +314,18 @@ html.has-lightbox { overflow: hidden; }
 @media (max-width: 640px) {
   .step { padding: 24px 22px 22px; }
 }
+
+/* ---------- reviews: name and words only ---------- */
+.reviews { list-style: none; margin: 0; padding: 0; columns: 3 300px; column-gap: 24px; }
+.review { break-inside: avoid; margin: 0 0 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 24px 28px 24px; box-shadow: var(--shadow-sm); }
+/* the quote mark sits on its own line above the words, never over them */
+.review::before { content: "״"; display: block; height: 30px; margin-bottom: 6px; font-family: var(--font-display); font-weight: 600;
+  font-size: 64px; line-height: 0.9; color: var(--sky-300); pointer-events: none; }
+.review__text { margin: 0; }
+.review__text p { font-size: 19px; line-height: 1.65; color: var(--navy); max-width: 40ch; }
+.review__who { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.review__initial { width: 40px; height: 40px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--sky-100);
+  color: var(--blue); font-family: var(--font-display); font-weight: 600; font-size: 17px; }
+.review__name { font-weight: 600; }
+@media (max-width: 640px) { .reviews { columns: 1; } .review { margin-bottom: 16px; padding: 20px 22px 20px; } .review__text p { font-size: 18px; } }
