@@ -1,6 +1,6 @@
 // Gentle motion with GSAP (SplitText + ScrollTrigger). Every piece runs once, eases out without overshoot,
 // and none of it runs when the visitor's device asks for reduced motion.
-//  1. The main heading (data-split-hero): the words rise in on load, one after another.
+//  1. The main heading (data-split-hero): revealed on load in one wipe from right to left.
 //  3 + 8. Headings with data-split-scroll (services, before and after, the call band): the same, once, as they scroll in.
 //  2. Before and after photos: enter one after another once their row is well inside the screen.
 //  7. Service cards: enter one after another the same way.
@@ -43,14 +43,19 @@
 
   const mm = gsap.matchMedia();
   mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // 1. The main heading: revealed in one smooth wipe from right to left, the way Hebrew is written.
+    //    (A clip that opens from the right edge; the extra room above and below keeps every letter whole.)
+    const hero = document.querySelector('[data-split-hero]');
+    if (hero) {
+      gsap.set(hero, { visibility: 'visible' });
+      gsap.fromTo(hero,
+        { clipPath: rtl ? 'inset(-25% -4% -25% 100%)' : 'inset(-25% 100% -25% -4%)', autoAlpha: 0.2 },
+        { clipPath: 'inset(-25% -4% -25% 0%)', autoAlpha: 1, duration: 1.1, ease: 'power3.inOut', delay: 0.15,
+        clearProps: 'clipPath' });
+    }
+
     // wait for the Hebrew fonts, so the words are measured in their real face
     document.fonts.ready.then(() => {
-      const hero = document.querySelector('[data-split-hero]');
-      if (hero) split(hero, (self) => {
-        gsap.set(hero, { visibility: 'visible' });
-        return gsap.from(self.words, { ...reveal, stagger: 0.18, delay: 0.15 });
-      });
-
       gsap.utils.toArray('[data-split-scroll]').forEach((el) => split(el, (self) => {
         gsap.set(el, { visibility: 'visible' });
         return gsap.from(self.words, { ...reveal, stagger: 0.12, scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
