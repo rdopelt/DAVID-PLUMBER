@@ -82,7 +82,7 @@
 
       <aside class="help enter enter--3" aria-labelledby="help-h">
         <span class="help__status"><span class="dot" aria-hidden="true"></span>א׳–ה׳ בכל שעה · שישי לחירום</span>
-        <h2 id="help-h" class="help__title">מה קרה בבית?</h2>
+        <h2 id="help-h" class="help__title">במה אוכל לעזור?</h2>
         <ul class="chips">
           <li><a class="chip" href="#s-clog"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-drain"/></svg>סתימה</a></li>
           <li><a class="chip" href="#s-leak"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-drop"/></svg>נזילה</a></li>
@@ -90,10 +90,10 @@
           <li><a class="chip" href="#s-heater"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-heater"/></svg>אין מים חמים</a></li>
           <li><a class="chip" href="#s-nodamage"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wrench"/></svg>תיקון ללא הרס</a></li>
         </ul>
-        <div class="help__phone">
-          <span>או פשוט התקשרו:</span>
-          <a href="tel:+972559635310" class="tel">055-9635310</a>
-        </div>
+        <a class="help__phone" href="tel:+972559635310" aria-label="או פשוט התקשרו אליי: 055-9635310">
+          <span class="help__phone-label">או פשוט התקשרו אליי</span>
+          <span class="help__phone-num"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg><span class="tel">055-9635310</span></span>
+        </a>
       </aside>
     </div>
     <svg class="wave" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 40C180 8 360 8 540 30s360 44 540 26 270-40 360-36v52H0z"/></svg>
@@ -103,8 +103,8 @@
   <section class="section" id="services" aria-labelledby="services-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="services-h" data-split-scroll>השירותים של דוד</h2>
-        <p>מצאו את התקלה שלכם, והתקשרו או כתבו לדוד בוואטסאפ.</p>
+        <h2 id="services-h" data-split-scroll>השירותים שלי</h2>
+        <p>מצאו את התקלה שלכם, והתקשרו או כתבו לי בוואטסאפ.</p>
       </div>
       <ul class="services">
         <li class="service" id="s-nodamage">
@@ -135,7 +135,7 @@
         <li class="service service--other">
           <span class="service__icon" aria-hidden="true"><svg><use href="#i-chat"/></svg></span>
           <h3>תקלה אחרת?</h3>
-          <p>הבעיה לא מופיעה כאן? ספרו לדוד מה קרה, והוא יגיד לכם איך אפשר לעזור.</p>
+          <p>הבעיה לא מופיעה כאן? ספרו לי מה קרה, ואגיד לכם איך אוכל לעזור.</p>
         </li>
       </ul>
       <!-- one pair of actions for every service -->
@@ -151,7 +151,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="work-h" data-split-scroll>לפני ואחרי</h2>
-        <p>תמונות אמיתיות מעבודות שדוד ביצע: ביוב, צנרת, דודים, אמבטיה ומטבח.</p>
+        <p>תמונות אמיתיות מעבודות שביצעתי: ביוב, צנרת, דודים, אמבטיה ומטבח.</p>
       </div>
       <div class="works-filter" role="group" aria-label="סינון העבודות לפי סוג">
         <button type="button" data-filter="all" aria-pressed="true">הכל</button>
@@ -332,8 +332,8 @@
   <section class="section" id="reviews" aria-labelledby="reviews-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="reviews-h">מה הלקוחות אומרים</h2>
-        <p>מתוך הביקורות של דוד אינסטלציה בגוגל.</p>
+        <h2 id="reviews-h">מה הלקוחות שלי אומרים</h2>
+        <p>מתוך הביקורות שלי בגוגל.</p>
       </div>
       <div class="carousel" aria-roledescription="קרוסלה" aria-label="המלצות לקוחות" data-carousel>
       <ul class="reviews" id="reviews-track" tabindex="0" aria-label="המלצות, אפשר לגלול הצידה">
@@ -407,7 +407,7 @@
   <section class="callband" aria-labelledby="call-h">
     <div class="wrap">
       <div>
-        <h2 id="call-h" data-split-scroll>יש תקלה באינסטלציה? דוד כאן.</h2>
+        <h2 id="call-h" data-split-scroll>יש תקלה באינסטלציה? אני כאן.</h2>
         <p>שיחה או הודעת וואטסאפ – א׳–ה׳ בכל שעה, שישי למקרי חירום.</p>
       </div>
       <div class="callband__actions">
@@ -495,7 +495,7 @@
   <button class="float__btn float__top" type="button" aria-label="חזרה לראש הדף" data-hidden inert data-to-top>
     <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 15V3.5M4 8.5 9 3.5l5 5"/></svg>
   </button>
-  <a class="float__btn float__wa" href="https://wa.me/972559635310" aria-label="שליחת הודעה בוואטסאפ לדוד">
+  <a class="float__btn float__wa" href="https://wa.me/972559635310" aria-label="שלחו לי הודעה בוואטסאפ">
     <img src="assets/icons/whatsapp.svg" alt="" width="30" height="30">
   </a>
 </div>
