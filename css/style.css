@@ -341,3 +341,23 @@ html.has-lightbox { overflow: hidden; }
 @media (hover: hover) and (pointer: fine) { .carousel__btn:not(:disabled):hover { border-color: var(--sky-300); } }
 @media (max-width: 960px) { .review { flex-basis: calc((100% - 16px) / 2.3); } }
 @media (max-width: 640px) { .review { flex-basis: 78%; } .reviews { gap: 12px; } }
+
+/* ---------- water stream down the page (js/animations.js) ---------- */
+/* it lives in the empty margin on the right, from the faucet under the header to the foot of the page */
+body { position: relative; }
+.stream { --sx: max(14px, calc((100vw - 1200px) / 4)); --top: 30px;
+  position: absolute; z-index: 5; top: 128px; bottom: 44px; right: 0; width: calc(var(--sx) + 26px); overflow: hidden; pointer-events: none; }
+.stream[hidden] { display: none; }
+.stream__faucet { position: absolute; top: 0; right: calc(var(--sx) - 26px); width: 34px; height: 34px;
+  fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.75; }
+.stream__water { position: absolute; top: var(--top); bottom: 10px; right: calc(var(--sx) - 1px); width: 2px; border-radius: 2px;
+  background: linear-gradient(to bottom, var(--sky-300), #7dbbe1); transform-origin: top; transform: scaleY(0); }
+.stream__drop { position: absolute; top: var(--top); right: calc(var(--sx) - 4px); width: 8px; height: 11px; margin-top: -2px; fill: #6fb2dc; }
+.stream__ripple { position: absolute; bottom: 4px; right: calc(var(--sx) - 12px); width: 24px; height: 7px; border-radius: 50%;
+  border: 1.5px solid #7dbbe1; opacity: 0; }
+@media (max-width: 640px) {
+  .stream { --sx: 9px; --top: 0px; top: 110px; bottom: calc(96px + env(safe-area-inset-bottom)); }   /* ends above the phone bar */
+  .stream__faucet { display: none; }
+  .stream__water { width: 1.5px; opacity: 0.85; }
+  .stream__drop { width: 6px; height: 8px; right: calc(var(--sx) - 3px); }
+}

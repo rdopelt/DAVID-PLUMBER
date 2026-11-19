@@ -65,6 +65,38 @@
     enterInTurn(gsap.utils.toArray('.work .work__shot'));
     // the "show all" button reveals more cards: measure the page again so their photos enter the same way
     document.addEventListener('works:opened', () => ScrollTrigger.refresh());
+
+    // The water stream: it grows from the faucet as the page scrolls, its drop at the front, and lands with one small
+    // ripple at the foot of the page. Only transform and opacity change, so it costs the browser almost nothing.
+    const stream = document.querySelector('[data-stream]');
+    if (stream) {
+      stream.hidden = false;
+      const water = stream.querySelector('.stream__water');
+      const drop = stream.querySelector('.stream__drop');
+      const ripple = stream.querySelector('.stream__ripple');
+      let landed = false;
+
+      gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: document.documentElement, start: 'top top', end: 'bottom bottom',
+          scrub: 0.6,                    // follows the scroll with a soft lag, so it flows rather than jumps
+          invalidateOnRefresh: true,     // re-measure when the page height changes (e.g. "show all" jobs)
+          onUpdate: (self) => {
+            if (self.progress > 0.995 && !landed) {
+              landed = true;
+              gsap.to(drop, { autoAlpha: 0, duration: 0.25 });
+              gsap.fromTo(ripple, { scale: 0.4, autoAlpha: 0.9 }, { scale: 1.8, autoAlpha: 0, duration: 1.1, ease: 'power2.out' });
+            } else if (self.progress < 0.97 && landed) {
+              landed = false;
+              gsap.to(drop, { autoAlpha: 1, duration: 0.2 });
+            }
+          },
+        },
+      })
+        .fromTo(water, { scaleY: 0.012 }, { scaleY: 1 }, 0)
+        .fromTo(drop, { y: () => water.offsetHeight * 0.012 }, { y: () => water.offsetHeight - 6 }, 0);
+    }
   });
 
   // with reduced motion, nothing is split or moved

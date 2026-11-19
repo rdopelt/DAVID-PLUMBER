@@ -475,6 +475,15 @@
   </div>
 </dialog>
 
+<!-- water stream: a faucet at the top of the page; its stream grows with the scroll and lands at the foot of the page.
+     Decorative only (aria-hidden). js/animations.js shows and drives it; without script or with reduced motion it stays hidden. -->
+<div class="stream" aria-hidden="true" hidden data-stream>
+  <svg class="stream__faucet" viewBox="0 0 34 34"><path d="M34 11H15a7 7 0 0 0-7 7v9"/><path d="M22 11V5M17 5h10"/><path d="M5 27h6"/></svg>
+  <span class="stream__water"></span>
+  <svg class="stream__drop" viewBox="0 0 10 13"><path d="M5 0C5 0 0 6.2 0 8.4A5 5 0 0 0 10 8.4C10 6.2 5 0 5 0Z"/></svg>
+  <span class="stream__ripple"></span>
+</div>
+
 <!-- floating buttons the brief asks for -->
 <div class="float">
   <button class="float__btn float__top" type="button" aria-label="חזרה לראש הדף" data-hidden inert data-to-top>
