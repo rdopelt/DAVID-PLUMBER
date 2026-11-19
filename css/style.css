@@ -172,15 +172,21 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .callband__phone { font-family: var(--font-display); font-size: clamp(28px, 2.6vw, 36px); font-weight: 600; color: var(--white); text-decoration: none; }
 
 /* ---------- footer ---------- */
-.footer { background: var(--sky-50); padding: 64px 0 24px; border-top: 1px solid var(--line); }
-.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-.footer__about p { margin-top: 12px; color: var(--muted); max-width: 32ch; }
-.footer h3 { font-size: 17px; font-weight: 600; margin-bottom: 12px; }
-.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-.footer li a, .footer li span { display: inline-flex; align-items: center; min-height: 40px; color: var(--muted); text-decoration: none; }
-.footer li a:hover { color: var(--navy); text-decoration: underline; }
-.footer__legal { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px;
-  flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.footer { background: var(--sky-50); padding: 32px 0 14px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
+.footer__grid { display: grid; grid-template-columns: 1.2fr 1fr 1.3fr; gap: 20px 32px; align-items: start; }
+.footer .logo { font-size: 18px; gap: 8px; }
+.footer .logo__mark { width: 30px; height: 30px; border-radius: 10px; }
+.footer .logo__mark svg { width: 16px; height: 16px; }
+.footer__about p { margin-top: 6px; color: var(--muted); }
+.footer h3 { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
+.footer__col p { color: var(--navy); }
+.footer__col a { color: var(--navy); text-decoration: none; display: inline-block; padding-block: 4px; }
+.footer__col a:hover { text-decoration: underline; }
+.footer__sep { color: var(--sky-300); padding-inline: 8px; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 0 18px; margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; }
+.footer__links a { color: var(--muted); text-decoration: none; padding-block: 6px; }
+.footer__links a:hover { color: var(--navy); text-decoration: underline; }
+.footer__legal { margin-top: 6px; padding-top: 8px; display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
 
 /* ---------- floating buttons: WhatsApp and back to top ---------- */
 .float { position: fixed; z-index: 40; inset-inline-end: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); display: grid; gap: 12px; justify-items: center; }
@@ -197,15 +203,18 @@ a { color: inherit; text-underline-offset: 0.2em; }
 
 /* ---------- tablet ---------- */
 @media (max-width: 960px) {
-  .hero__grid { grid-template-columns: 1fr; gap: 40px; }
-  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__about { grid-column: 1 / -1; }
+  .hero__grid { grid-template-columns: 1fr; gap: 40px; }
+  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- phone ---------- */
 @media (max-width: 640px) {
   body { font-size: 16px; }
+  .footer { padding: 26px 0 12px; font-size: 14.5px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 12px; }
+  .footer__links { gap: 0 14px; margin-top: 14px; }
   .topbar__avail-text--long { display: none; }
   .topbar__links .topbar__wa { display: none; }
   .header .wrap { min-height: 60px; gap: 12px; }
@@ -222,7 +231,6 @@ a { color: inherit; text-underline-offset: 0.2em; }
   .callband { padding: 56px 0; }
   .callband__actions { width: 100%; }
   .callband__actions .btn { flex: 1 1 100%; }
-  .footer__grid { grid-template-columns: 1fr; gap: 28px; }
   .float { bottom: calc(12px + env(safe-area-inset-bottom)); inset-inline-end: 12px; }
 }
 @media (max-width: 360px) {
@@ -426,8 +434,6 @@ body { position: relative; }
   .callband p { font-size: 16.5px; }
   .callband__phone { font-size: 26px; }
   .topbar { font-size: 14px; }
-  .footer { padding-top: 48px; }
-  .footer li a, .footer li span { min-height: 36px; }
   /* the reviews run to the screen's edge, so the next card peeks in from the edge, not from the page margin */
   .reviews { margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut); scroll-padding-inline: var(--gut); }
   .review { flex-basis: 80%; }
