@@ -47,6 +47,8 @@ body { margin: 0; font-family: var(--font-text); font-size: 17px; line-height: 1
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 ::selection { background: var(--sky-300); color: var(--navy); }
 img, svg { display: block; max-width: 100%; }
+/* phones: no grey/blue flash on tap; every button and link already shows its own press state */
+a, button, input { -webkit-tap-highlight-color: transparent; }
 h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; text-wrap: balance; }
 p { margin: 0; }
 a { color: inherit; text-underline-offset: 0.2em; }
@@ -271,17 +273,6 @@ a { color: inherit; text-underline-offset: 0.2em; }
 @media (hover: hover) and (pointer: fine) { .lightbox__close:hover { background: rgb(255 255 255 / 0.24); } }
 html.has-lightbox { overflow: hidden; }
 
-/* ---------- how it works ---------- */
-.section--steps { background: var(--beige); }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: none; }
-.step { position: relative; background: var(--white); border-radius: var(--r-md); padding: 32px 28px 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
-.step__num { position: absolute; top: 18px; inset-inline-end: 24px; font-family: var(--font-display); font-weight: 600; font-size: 56px; line-height: 1;
-  color: var(--sky-200); font-variant-numeric: tabular-nums; }
-.step__icon { width: 52px; height: 52px; border-radius: 50%; background: var(--sky-100); color: var(--blue); display: grid; place-items: center; }
-.step__icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-.step h3 { margin-top: 20px; font-size: 21px; font-weight: 500; }
-.step p { margin-top: 8px; color: var(--muted); }
-
 /* ---------- phone bar: call and WhatsApp under the thumb ---------- */
 .mbar { display: none; }
 @media (max-width: 640px) {
@@ -307,12 +298,6 @@ html.has-lightbox { overflow: hidden; }
 .lightbox:has(.lightbox__switch:not([hidden])) .lightbox__figure { padding-bottom: 88px; }
 .lightbox:has(.lightbox__switch:not([hidden])) .lightbox__img { max-height: calc(100dvh - 230px); }
 
-@media (max-width: 960px) {
-  .steps { grid-template-columns: 1fr; gap: 16px; }
-}
-@media (max-width: 640px) {
-  .step { padding: 24px 22px 22px; }
-}
 
 /* ---------- reviews: a compact carousel, name and words only ---------- */
 /* a native horizontal scroll with snap points: swipe on a phone, arrows or a trackpad on a computer; it never moves by itself */
