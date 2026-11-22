@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://david-plumber.netlify.app/sitemap.xml
+Sitemap: https://plumberdavid-jerusalem.co.il/sitemap.xml
