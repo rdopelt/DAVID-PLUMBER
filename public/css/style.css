@@ -107,6 +107,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .hero { position: relative; background: linear-gradient(180deg, var(--sky-100) 0%, var(--sky-200) 100%); padding: 64px 0 120px; overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: center; }
 .hero h1 { font-size: clamp(44px, 5.2vw, 76px); font-weight: 600; letter-spacing: -0.01em; }
+.hero__sub { display: block; margin-top: 0.3em; font-size: 0.42em; font-weight: 500; letter-spacing: 0; color: var(--navy); }
 .hero__values { margin-top: 16px; font-family: var(--font-display); font-size: clamp(22px, 2vw, 30px); color: var(--blue); }
 .hero__values span[aria-hidden] { color: var(--sky-300); padding-inline: 0.4em; }
 .hero__lead { margin-top: 24px; font-size: clamp(18px, 1.3vw, 21px); line-height: 1.7; max-width: 34ch; color: var(--navy); }
@@ -417,6 +418,7 @@ body { position: relative; }
 /* ---------- phone: type sized for a phone, everything inside the screen ---------- */
 @media (max-width: 640px) {
   .hero h1 { font-size: clamp(32px, 9.4vw, 38px); }
+  .hero__sub { font-size: 0.56em; }
   .hero__values { font-size: 19px; margin-top: 10px; }
   .hero__lead { font-size: 16.5px; margin-top: 16px; }
   .hero__actions { margin-top: 24px; }
