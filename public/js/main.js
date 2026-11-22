@@ -128,17 +128,24 @@ const EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   });
 })();
 
-// Before and after: six jobs first, the rest behind one button.
+// Before and after: six jobs first, the rest behind one button. The same button then reads "מזער" and folds them away again.
 (() => {
   const btn = document.querySelector('[data-works-more]');
   const list = document.getElementById('works-list');
   if (!btn || !list) return;
   btn.addEventListener('click', () => {
-    list.classList.add('is-open');
-    btn.parentElement.hidden = true;
-    // focus moves to the first newly shown job, so keyboard users continue where the button was
-    const first = list.querySelector('.work--extra h3');
-    if (first) { first.tabIndex = -1; first.focus({ preventScroll: true }); }
+    const open = !list.classList.contains('is-open');
+    list.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
+    if (open) {
+      // focus moves to the first newly shown job, so keyboard users continue where the button was
+      const first = list.querySelector('.work--extra h3');
+      if (first) { first.tabIndex = -1; first.focus({ preventScroll: true }); }
+    } else {
+      // the list got much shorter: bring the button back into view so the reader is not left further down the page
+      btn.scrollIntoView({ block: 'center', behavior: reduceMotion() ? 'auto' : 'smooth' });
+    }
     document.dispatchEvent(new Event('works:opened'));
   });
 })();
