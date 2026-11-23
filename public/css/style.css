@@ -224,7 +224,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
   .logo { font-size: 20px; }
   .hero { padding: 40px 0 96px; }
   .hero__actions .btn { flex: 1 1 100%; }
-  .help { padding: 22px; }
+  .help { display: none; }   /* on a phone the call and WhatsApp buttons sit right above it, so the card only repeated them */
   .section { padding: 64px 0; }
   .section-head { margin-bottom: 32px; }
   .services { grid-template-columns: 1fr; gap: 16px; }
